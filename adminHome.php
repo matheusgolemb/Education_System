@@ -6,6 +6,9 @@
 
 <?php 
 include './pages/header.php';
+
+// $teste = [["stID"=>"1001039","mark"=>0],["stID"=>"1001001","mark"=>0]];
+// print_r(valExists($teste,"100109"));
  
 if(!isset($_SESSION['logUser'])) {
     header("Location: ".$baseName.'index.php');
@@ -27,13 +30,19 @@ if(!isset($_SESSION['logUser'])) {
     </div>
     <div class="row justify-content-center align-items-center g-2">
         <div class="col-6">
-            <div class="alert alert-success alert-dismissible fade show" role="alert" 
-            style="display:" <?php if (isset($_GET['msg']))
+            <div style="display: <?php if (isset($_GET['msg']))
                 echo "block";
-            else echo "none";
-            ?>>
+                else echo "none";
+            ?>;" 
+            class="alert alert-dismissible fade show
+            <?php if($_GET['msg'] == "1") echo "alert-success";
+                elseif($_GET['msg']=="0") echo "alert-danger";
+            ?>" role="alert" 
+            >
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              <strong>Message</strong> Student registered!
+                <strong>Message</strong><?php if($_GET['msg'] == "1") echo " Student registered!";
+                elseif($_GET['msg']=="0") echo " ERROR - Student NOT registered!";
+            ?>
             </div>
 
             <form method="POST" action="<?php echo $baseName.'regStCourse.php';?>">

@@ -22,6 +22,9 @@
                         <a class="nav-link" href="<?php echo $baseName.'regForm.php';?>" aria-current="page">Register</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $baseName.'index.php';?>" aria-current="page">Login</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" style="display: <?php 
                         if(isset($_SESSION['logUser'])) echo "block";
                         else echo "none";
