@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'
       exit();
    }else{
       $crsArray = readFileMat('./data/courses/' . $selCourse . '.json');
-      if(!valExists($crsArray, $stID)){ //Checking if value is repeated in array
+      if(!valExists($crsArray, $stID)){ //Checking if value is not repeated in array
          array_push($crsArray, $newStud);
          $file = fopen('./data/courses/' . $selCourse . '.json', 'w');
          fwrite($file, json_encode($crsArray));
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'
          print_r($crsArray);
          header("Location: " . $baseName . 'adminHome.php?msg=1');
          exit();
-      }else{
+      }else{ //If value is repeated
          header("Location: " . $baseName . 'adminHome.php?msg=0');
          exit();
       }

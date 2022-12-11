@@ -9,7 +9,7 @@ if(!isset($_SESSION['logUser'])) {
 }
 ?>
 
-<div class="row justify-content-start align-items-start g-2">
+<div class="row justify-content-center align-items-center g-2">
     <div class="col-5">
         <div class="card text-start">
           <div class="card-body">
@@ -21,7 +21,7 @@ if(!isset($_SESSION['logUser'])) {
           </div>
         </div>
     </div>
-    <div class="col-7">Column</div>
+    <!-- <div class="col-7">Column</div> -->
 </div>
 
 <?php include './pages/footer.php'; ?>

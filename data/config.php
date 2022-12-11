@@ -33,13 +33,33 @@
         exit();
     }
 
-    function valExists($associatedArray, $searchVal){ //Works like .get in JS Maps
+    function valExists($associatedArray, $searchVal){ //Works like .get in JS Maps. Search the value and return value back
         foreach($associatedArray as $idx=>$item){
         foreach($item as $key=>$props){
             if($searchVal==$props){
                 return [$key=>$props];
             }
         }
+        }
+        return 0;  //0 means false
+    }
+    function getFullArray($associatedArray, $searchVal){ //Works like .get in JS Maps. Search the value and return value back
+        foreach($associatedArray as $idx=>$item){
+        foreach($item as $key=>$props){
+            if($searchVal==$props){
+                return $item;
+            }
+        }
+        }
+        return 0;  //0 means false
+    }
+    function getValbyKey($associatedArray, $searchKey){ //Works like .get in JS Maps. Search the key and return value back
+        foreach($associatedArray as $idx=>$item){
+            foreach($item as $key=>$props){
+                if($searchKey==$key){
+                    return [$key=>$props];
+                }
+            }
         }
         return 0;  //0 means false
     }

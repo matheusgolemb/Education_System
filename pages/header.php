@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Education System</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+</style>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark mb-2" style="background-color: firebrick">
@@ -19,16 +26,19 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $baseName.'regForm.php';?>" aria-current="page">Register</a>
+                        <a class="nav-link" href="<?php echo $baseName.'regForm.php';?>" aria-current="page">Register Student</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $baseName.'index.php';?>" aria-current="page">Login</a>
+                    <li class="nav-item" style="display: <?php 
+                        if(isset($_SESSION['logUser'])) echo "none";
+                        else echo "block";
+                         ?> ;">
+                        <a class="nav-link" href="<?php echo $baseName.'index.php';?>" aria-current="page"  href="<?php echo $baseName.'logout.php';?>">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="display: <?php 
+                    <li class="nav-item" style="display: <?php 
                         if(isset($_SESSION['logUser'])) echo "block";
                         else echo "none";
-                         ?> ;" href="<?php echo $baseName.'logout.php';?>">Logout</a>
+                         ?> ;">
+                        <a class="nav-link"  href="<?php echo $baseName.'logout.php';?>">Logout</a>
                     </li>
     
                 </ul>
