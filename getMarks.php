@@ -11,7 +11,8 @@ if($_SERVER['REQUEST_METHOD']='POST'){
                     $marksFile = readFileMat('./data/courses/' . $stud['course'] . '.json'); //reading the marks file to store new mark
                     foreach($marksFile as $idx=>$mark){ //loop through all marks to find the student with the eddited mark and update the value
                         if($mark['stID']==$_POST['stID']){
-                            $mark['mark'] = $newMark;
+                            $marksFile[$idx]['mark'] = $newMark;
+                            // print_r($marksFile[$idx]['mark']);
                             break;
                         }
                     }
