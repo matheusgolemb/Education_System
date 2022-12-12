@@ -6,17 +6,13 @@
 
 <?php 
 include './pages/header.php';
-
-// $teste = [["stID"=>"1001039","mark"=>0],["stID"=>"1001001","mark"=>0]];
-// print_r(valExists($teste,"100109"));
  
 if(!isset($_SESSION['logUser'])) {
     header("Location: ".$baseName.'index.php');
     exit();
 }else{
     $logUser = $_SESSION['logUser'];
-    $studs=readFileMat('./data/students/students.json');
-    // print_r($studs);
+    $studs = readFileMat('./data/students/students.json');
 }
 ?>
 <div class="container-fluid">
@@ -36,12 +32,13 @@ if(!isset($_SESSION['logUser'])) {
             ?>;" 
             class="alert alert-dismissible fade show
             <?php if($_GET['msg'] == "1") echo "alert-success";
-                elseif($_GET['msg']=="0") echo "alert-danger";
+                elseif($_GET['msg']=="0" || $_GET['msg']=="2") echo "alert-danger";
             ?>" role="alert" 
             >
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 <strong>Message</strong><?php if($_GET['msg'] == "1") echo " Student registered!";
                 elseif($_GET['msg']=="0") echo " ERROR - Student NOT registered!";
+                elseif($_GET['msg']=="2") echo " ERROR - Student is already registered in ".strtoupper($_GET['cs'])." course!";
             ?>
             </div>
 

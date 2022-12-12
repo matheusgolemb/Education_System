@@ -8,21 +8,31 @@
         fclose($file);
         return $dataArray;
     }
+    function writeInFile($fileName, $newData){  //write in file new data
+        $file = fopen($fileName, 'w');
+        fwrite($file, json_encode($newData));
+        fclose($file);
+    }
     function checkLogin($userArray, $role, $email, $pass){ //check pass and email. If correct, redirect to $role page. If incorrect redirect to index
         $baseName = "http://localhost/php_course/Class_07/EducationSystem/";
         foreach($userArray as $user){
             if($user['email']==$email && $user['pass']==$pass){
-                $_SESSION['logUser'] = $user;
                 switch ($role) {
                     case 'tech':
+                        $user['logHome'] = $baseName.'teacherHome.php';
+                        $_SESSION['logUser'] = $user;
                         header("Location: ".$baseName.'teacherHome.php');
                         exit();
                         break;
                     case 'st':
+                        $user['logHome'] = $baseName.'profile.php';
+                        $_SESSION['logUser'] = $user;
                         header("Location: ".$baseName.'profile.php');
                         exit();
                         break;
                     case 'admin':
+                        $user['logHome'] = $baseName.'adminHome.php';
+                        $_SESSION['logUser'] = $user;
                         header("Location: ".$baseName.'adminHome.php');
                         exit();
                         break;
@@ -33,7 +43,7 @@
         exit();
     }
 
-    function valExists($associatedArray, $searchVal){ //Works like .get in JS Maps. Search the value and return value back
+    function valExists($associatedArray, $searchVal){ //Works like .get in JS Maps. Search the value and return only the value and key of the array back
         foreach($associatedArray as $idx=>$item){
         foreach($item as $key=>$props){
             if($searchVal==$props){

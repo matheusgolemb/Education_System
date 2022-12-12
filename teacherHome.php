@@ -63,10 +63,10 @@ if(isset($_SESSION['chStuds'])){
             <fieldset class="form-group border p-3">
                 <legend class="w-auto px-2">2. Select student</legend>
                 <div class="mb-3">
-                    <!-- <label for="" class="form-label">Select student</label> -->
                     <select class="form-select form-select-lg" name="stID">
                         <option selected disabled value="">Select Course</option>
                         <?php 
+                            //chStuds is a variable with the students of the selected course
                             foreach($chStuds as $stud){
                                 echo "<option value='".$stud['stID']."'>" . $stud['fname'] . " " . $stud['lname'] . "</option>";
                             }
@@ -108,27 +108,24 @@ if(isset($_SESSION['chStuds'])){
                                 ?>;">
                                 <?php
                                 if(isset($_SESSION['selStud'])){
-                                    $selStud = $_SESSION['selStud'];
-                                    foreach($selStud as $stud){
                                         echo "<tr class='table-light'>";
                                             echo "<td>
-                                            <input type='text' name='stID' readonly class='form-control-plaintext text-center' value='".$stud['stID']."'>
+                                            <input type='text' name='stID' readonly class='form-control-plaintext text-center' value='".$selStud['stID']."'>
                                             </td>";
-                                            echo "<td>".$stud['fname']." ".$stud['lname']."</td>";
-                                            echo "<td>".$stud['email']."</td>";
-                                            if(isset($_GET['stID']) && $_GET['stID']==$stud['stID'] && !isset($_GET['mark'])){
-                                                echo "<td class='tdInput'><input min='0' max='100' name='newMark' class='form-control' style='width:10vh;' type='number' value=".$stud['mark']."></td>";
+                                            echo "<td>".$selStud['fname']." ".$selStud['lname']."</td>";
+                                            echo "<td>".$selStud['email']."</td>";
+                                            if(isset($_GET['stID']) && $_GET['stID']==$selStud['stID']){
+                                                echo "<td class='tdInput'><input min='0' max='100' name='newMark' class='form-control' style='width:10vh;' type='number' value=".$selStud['mark']."></td>";
                                             }else{
-                                                echo "<td>".$stud['mark']."</td>";
+                                                echo "<td>".$selStud['mark']."</td>";
                                             }
                                             echo "<td>
                                                 <a class='btn btn-outline-primary'
-                                                href='".$_SERVER['PHP_SELF']."?stID=".$stud['stID']."' 
+                                                href='".$_SERVER['PHP_SELF']."?stID=".$selStud['stID']."' 
                                                 role='button'>Edit</a>
                                                 <button type='submit' class='btn btn-outline-primary'>Save</button>
                                                 </td>";
                                         echo "</tr>";
-                                    }
                                 }
                                 ?>
                             </tbody>

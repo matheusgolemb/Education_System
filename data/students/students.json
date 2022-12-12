@@ -1400,10 +1400,24 @@
         "pass": "Ew3V2yPbU"
     },
     {
-        "stID": "1001203",
+        "stID": 1001203,
         "fname": "Reginaldo",
         "lname": "James",
         "email": "regis@mail.com",
         "pass": "test"
+    },
+    {
+        "stID": 1001201,
+        "fname": "Claudemir",
+        "lname": "Marcus",
+        "email": "claud@mail.com",
+        "pass": "caludemir"
+    },
+    {
+        "stID": 1001201,
+        "fname": "Marcus",
+        "lname": "Paulo",
+        "email": "mcspaulo@mail.com",
+        "pass": "marcospaulo123"
     }
 ]

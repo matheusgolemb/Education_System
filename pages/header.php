@@ -25,7 +25,10 @@
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item" style="display: <?php 
+                        if(isset($_SESSION['logUser']) && $_SESSION['role']!=='st') echo "block";
+                        else echo "none";
+                         ?> ;">
                         <a class="nav-link" href="<?php echo $baseName.'regForm.php';?>" aria-current="page">Register Student</a>
                     </li>
                     <li class="nav-item" style="display: <?php 
@@ -33,6 +36,12 @@
                         else echo "block";
                          ?> ;">
                         <a class="nav-link" href="<?php echo $baseName.'index.php';?>" aria-current="page"  href="<?php echo $baseName.'logout.php';?>">Login</a>
+                    </li>
+                    <li class="nav-item" style="display: <?php 
+                        if(isset($_SESSION['logUser'])) echo "block";
+                        else echo "none";
+                         ?> ;">
+                        <a class="nav-link"  href="<?php echo $_SESSION['logUser']['logHome'];?>">HomePage</a>
                     </li>
                     <li class="nav-item" style="display: <?php 
                         if(isset($_SESSION['logUser'])) echo "block";

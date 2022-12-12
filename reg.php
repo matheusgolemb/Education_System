@@ -2,7 +2,7 @@
     include './data/config.php';
     include './data/studentClass.php';
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $stID = $_POST['stid'];
+        $stID = intval($_POST['stid']);
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $email = $_POST['email'];
@@ -17,9 +17,7 @@
         }
         fclose($file);
         array_push($stArray,$student->convert_info());
-        $file = fopen('./data/students/students.json','w');
-        fwrite($file,json_encode($stArray));
-        fclose($file);
+        writeInFile('./data/students/students.json', $stArray);
         header("Location: ".$baseName.'regForm.php?msg=Registeration OK');
         exit();
     }

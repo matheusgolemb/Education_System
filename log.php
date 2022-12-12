@@ -4,7 +4,7 @@
         $email = $_POST['email'];
         $pass = $_POST['pass'];
         $role = $_POST['role'];
-        // print_r($role);
+        $_SESSION['role'] = $role;
         switch ($role) {
         case 'tech':
             checkLogin(readFileMat('./data/teachers/teachers.json'), $role, $email, $pass);
