@@ -6,9 +6,9 @@ if(!isset($_SESSION['logUser'])) {
     exit();
 }else{
     $logUser = $_SESSION['logUser'];
-    $allCourses = array_diff(scandir('./data/courses', SCANDIR_SORT_DESCENDING), array('.', '..'));
+    $allCourses = array_diff(scandir('./data/courses', SCANDIR_SORT_DESCENDING), array('.', '..')); //Get array with all files
     $studMarks = [];
-    foreach($allCourses as $course){
+    foreach($allCourses as $course){ //loop trough all files and check in which course student is registed
         $cs = readFileMat("./data/courses/$course");
         // print_r($cs);
         foreach($cs as $c){
